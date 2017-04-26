@@ -53,7 +53,7 @@ class _map{
   public:
     void init();
     void make_maze(int x, int y, int difx, int dify);
-    void convert(int ratio);   /* ratio < 64 */
+    void convert(unsigned int ratio);   /* ratio < 64 */
     inline char& pos(int x, int y){ return data[(y<<sx_log2) + x];}
 };  
 

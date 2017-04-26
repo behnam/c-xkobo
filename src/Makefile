@@ -21,15 +21,17 @@ SRCS = $(SRCS1) $(SRCS2)
 DEFINES = -DWAIT_MSEC=$(WAIT_MSEC) -DSHIPS=$(SHIPS) \
           -DXKOBO_SCORE_DIR=\"$(HSCORE_DIR)\"
 
-CFLAGS=$(DEFINES)
-CCOPTIONS = #-Wall -g -pg
+CXX = g++-mp-4.7
 
-LOCAL_LIBRARIES = -L/usr/X11/lib -lX11
+CFLAGS=$(DEFINES) `pkg-config --cflags x11` \
+       -g -pg -Wall -Wno-write-strings -Wno-deprecated-declarations
+
+LDFLAGS=`pkg-config --libs x11`
 
 OBJS = $(SRCS1:.C=.o) $(SRCS2:.c=.o)
 
 xkobo: $(OBJS) $(DEPLIBS)
-	$(CXX) -o $@ $(OBJS) $(LDOPTIONS) $(LOCAL_LIBRARIES) $(LDLIBS) $(EXTRA_LOAD_FLAGS)
+	$(CXX) -o $@ $(OBJS) $(LDOPTIONS) $(LDFLAGS) $(LDLIBS) $(EXTRA_LOAD_FLAGS)
 
 .C.o:
 	$(CXX) $(CFLAGS) -c $< -o $@

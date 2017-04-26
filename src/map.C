@@ -124,7 +124,7 @@ int _map::maze_judge(int cx, int cy, int dx, int dy, int x, int y)
     return 1;
 }
 
-void _map::convert(int ratio)
+void _map::convert(unsigned int ratio)
 {
     int i, j;
     int p = 0;

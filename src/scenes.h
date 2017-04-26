@@ -39,7 +39,7 @@ typedef struct {
     int x, y, h, v;
 } _base;
 
-typedef const struct {
+typedef const struct _scene_struct {
     int ratio;
     int startx;
     int starty;

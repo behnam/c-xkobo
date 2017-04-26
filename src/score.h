@@ -34,7 +34,7 @@ class _scorefile{
     static char login_name[64];
   public:
     static void init(int *highscorep, int *stagep);
-    static void record(int new_score, int stage);
+    static void record(unsigned int new_score, unsigned int stage);
     static void show_high_scores(int to_stdout);
 };
 

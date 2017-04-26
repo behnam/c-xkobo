@@ -180,8 +180,8 @@ inline void _enemy::shot_template(const enemy_kind *ekp,
     int vx = -diffx;
     int vy = -diffy;
     if (rnd){
-        vx += rand_num.get() & (rnd-1) - (rnd>>1);
-        vy += rand_num.get() & (rnd-1) - (rnd>>1);
+        vx += rand_num.get() & ((rnd-1) - (rnd>>1));
+        vy += rand_num.get() & ((rnd-1) - (rnd>>1));
     }
     vx <<= (SHIFT-shift);
     vy <<= (SHIFT-shift);
@@ -290,7 +290,7 @@ void _enemy::move_bomb1()
 {
     int h1 = ABS(diffx);
     int v1 = ABS(diffy);
-    if (((h1 < 100) && (v1 < 30)) || (h1 < 30) && (v1 < 100)){
+    if (((h1 < 100) && (v1 < 30)) || ((h1 < 30) && (v1 < 100))){
         int vx1 = (-diffx << (SHIFT-3)) / 3;
         int vy1 = (-diffy << (SHIFT-3)) / 3;
         int vx2 = vx1, vx3 = vx1;
@@ -327,7 +327,7 @@ void _enemy::move_bomb2()
 {
     int h1 = ABS(diffx);
     int v1 = ABS(diffy);
-    if (((h1 < 100) && (v1 < 20)) || (h1 < 20) && (v1 < 100)){
+    if (((h1 < 100) && (v1 < 20)) || ((h1 < 20) && (v1 < 100))){
         int vx1 = (-diffx << (SHIFT-3)) / 3;
         int vy1 = (-diffy << (SHIFT-3)) / 3;
         int vx2 = vx1, vx3 = vx1;
@@ -610,15 +610,14 @@ void _enemy::move_pipe2()
         return;
     }
     p ^= a;
-    int a=0, b=0, c=0, d=0;
     if (p & U_MASK)
-      a=enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 1);
+      enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 1);
     if (p & R_MASK)
-      b=enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 3);
+      enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 3);
     if (p & D_MASK)
-      c=enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 5);
+      enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 5);
     if (p & L_MASK)
-      d=enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 7);
+      enemies.make(&pipe2, (x>>SHIFT), (y>>SHIFT), 0, 0, 7);
     manage.add_score(10);
     state = notuse;
 }

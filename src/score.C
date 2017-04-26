@@ -98,7 +98,7 @@ void _scorefile::init(int *highscorep, int *stagep)
     _scorefile::show_high_scores(0);
 }
 
-void _scorefile::record(int new_score, int stage)
+void _scorefile::record(unsigned int new_score, unsigned int stage)
 {
     int write = 0;
     s_table tbl;

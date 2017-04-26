@@ -104,7 +104,7 @@ unsigned long win_cmap::search_near(long r, long g, long b)
         x = (b - (col[i].blue >> 8));
         norm[i] += x*x;
     }
-    int min = norm[0];
+    unsigned int min = norm[0];
     int min_pixel = 0;
     for (i=0; i<num_cell; i++){
         if (norm[i] < min){

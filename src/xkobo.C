@@ -112,7 +112,7 @@ void client_message_callback(win&)
     wm_protocols = XInternAtom(win::disp, "WM_PROTOCOLS", False);
     wm_delete_window = XInternAtom(win::disp, "WM_DELETE_WINDOW", False);
     if ((win::xevt.xclient.message_type == wm_protocols) &&
-        (win::xevt.xclient.data.l[0] == wm_delete_window)){
+        (win::xevt.xclient.data.l[0] == (unsigned) wm_delete_window)){
         _manage::exit_key();
         _manage::exit_key();
     }
